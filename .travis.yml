@@ -1,0 +1,15 @@
+language: ruby
+rvm:
+- 2.1.2
+addons:
+  postgresql: '9.3'
+before_script:
+- psql -c 'create database travis_ci_test;' -U postgres
+- cp config/database.yml.travis config/database.yml
+deploy:
+  provider: heroku
+  api_key:
+    secure: rDlDSTYA8g4ZbGWrYHCgC6FtzsnwcvF/jmoCelV/KyzAcoXOXXbK3mkCztXUi/ytkQwxBXmykOqjqK96tDAET/DKwGtNr23Z/sheq6FDK/v9UfoiMHg68u5vD4SqUnLBe0ondqcicHTZIk+bKmzkQ35EiHJjggD2cFzz4Fkptsc=
+  app: rails_bteam
+  on:
+    repo: omoto/rails_bteam
